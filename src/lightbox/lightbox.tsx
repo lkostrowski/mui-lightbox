@@ -80,7 +80,7 @@ export const Lightbox = ({
 
 	return (
 		<Dialog maxWidth="xl" {...props} onKeyDown={handleKeyDown}>
-			{images.map((image, index) => {
+			{images.map(({ className, ...image }, index) => {
 				if (index !== selected) {
 					return null;
 				}
@@ -88,7 +88,7 @@ export const Lightbox = ({
 				return (
 					<TransitionComponent key={image.src} in={selected === index}>
 						<div>
-							<img className={styles.image} src={image.src} />
+							<img className={styles.image} {...image} />
 							{image.title && (
 								<Card className={styles.titleCard} variant="outlined">
 									<Typography variant="caption">{image.title}</Typography>

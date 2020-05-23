@@ -1,51 +1,43 @@
 import 'react-app-polyfill/ie11';
 import * as React from 'react';
+import { PropsWithChildren } from 'react';
 import * as ReactDOM from 'react-dom';
-import { Lightbox } from '../src';
 import {
-	Button,
-	Collapse,
+	Box,
+	Container,
 	createMuiTheme,
 	CssBaseline,
-	Grow,
-	Slide,
+	Divider,
 	ThemeProvider,
 	Typography,
 } from '@material-ui/core';
-import { useState } from 'react';
+import { DefaultExample } from './variants/default.example';
+import { deepOrange } from '@material-ui/core/colors';
 
-const theme = createMuiTheme();
+const theme = createMuiTheme({
+	palette: {
+		primary: deepOrange,
+	},
+});
+
+const Wrapper = (props: PropsWithChildren<{}>) => (
+	<ThemeProvider theme={theme}>
+		<CssBaseline />
+		<Container>
+			<Box my={4}>
+				<Typography variant="h3">Lightbox Demo</Typography>
+				<div>{props.children}</div>
+			</Box>
+		</Container>
+	</ThemeProvider>
+);
 
 const App = () => {
-	const [open, setOpen] = useState(true);
-
 	return (
-		<ThemeProvider theme={theme}>
-			<CssBaseline />
-			<Typography variant="h3">Lightbox Demo</Typography>
-			<Button color="primary" variant="contained" onClick={() => setOpen(true)}>
-				Open default
-			</Button>
-			<Lightbox
-				onClose={() => setOpen(false)}
-				images={[
-					{
-						title: 'Some image title',
-						src:
-							'https://images.unsplash.com/photo-1590157678696-a5151f512cbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2251&q=80',
-					},
-					{
-						src:
-							'https://images.unsplash.com/photo-1587613990174-1f14ba3be7cb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80',
-					},
-					{
-						src:
-							'https://images.unsplash.com/photo-1590114025443-530951ab7702?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=975&q=80',
-					},
-				]}
-				open={open}
-			/>
-		</ThemeProvider>
+		<Wrapper>
+			<DefaultExample my={5} />
+			<Divider />
+		</Wrapper>
 	);
 };
 
