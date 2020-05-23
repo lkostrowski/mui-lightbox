@@ -12,14 +12,29 @@ const useStyles = makeStyles((theme) => ({
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: `calc(100vw - ${theme.spacing(4)}px)`,
-    height: `calc(100vh - ${theme.spacing(4)}px)`,
+    width: '100%',
+    height: '100%',
+    maxWidth: `calc(100vw - ${theme.spacing(4)}px)`,
+    maxHeight: `calc(100vh - ${theme.spacing(4)}px)`,
+    overflow: 'hidden',
+  },
+  imageWrapper: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    maxWidth: '100%',
+    height: '100%',
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   image: {
     display: 'block',
-    width: '100%',
     objectFit: 'contain',
     height: '100%',
+    maxWidth: '100%',
   },
 }));
 
@@ -29,7 +44,11 @@ export const Lightbox = ({ images, ...props }: LightboxProps) => {
   return (
     <Modal {...props}>
       <div className={styles.wrapper}>
-        <img className={styles.image} src={images[0].src} />
+        {images.map((image) => (
+          <div className={styles.imageWrapper} key={image.src}>
+            <img className={styles.image} src={image.src} />
+          </div>
+        ))}
       </div>
     </Modal>
   );
