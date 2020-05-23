@@ -29,6 +29,10 @@
 			"pre-push": "yarn prepare"
 		}
 	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/lkostrowski/mui-lightbox"
+	},
 	"name": "mui-lightbox",
 	"author": "Lukasz Ostrowski",
 	"module": "dist/mui-lightbox.esm.js",
