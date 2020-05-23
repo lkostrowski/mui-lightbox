@@ -25,7 +25,8 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "tsdx lint"
+			"pre-commit": "tsdx lint",
+			"pre-push": "yarn prepare"
 		}
 	},
 	"name": "mui-lightbox",
