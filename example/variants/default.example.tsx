@@ -42,8 +42,7 @@ const images = [
 	},
 ];
 
-<Lightbox onClose={() => setOpen(false)} images={images} open={open} />
-
+<Lightbox images={images} />
 `;
 
 export const DefaultExample = (props: BoxProps) => {

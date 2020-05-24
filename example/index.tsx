@@ -13,6 +13,7 @@ import {
 } from '@material-ui/core';
 import { DefaultExample } from './variants/default.example';
 import { deepOrange } from '@material-ui/core/colors';
+import { BackdropExample } from './variants/backdrop.example';
 
 const theme = createMuiTheme({
 	palette: {
@@ -37,6 +38,7 @@ const App = () => {
 		<Wrapper>
 			<DefaultExample my={5} />
 			<Divider />
+			<BackdropExample my={5} />
 		</Wrapper>
 	);
 };
